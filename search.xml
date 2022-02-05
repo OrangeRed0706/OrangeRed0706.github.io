@@ -20,6 +20,12 @@
       </tags>
   </entry>
   <entry>
+    <title>test</title>
+    <url>/2022/02/06/test/</url>
+    <content><![CDATA[<p>46543213<br>13213<br>1321<br>31231321<br>1312321</p>
+]]></content>
+  </entry>
+  <entry>
     <title>C#-壓縮、解壓縮與檔案搬移</title>
     <url>/2022/02/06/C-%E5%A3%93%E7%B8%AE%E3%80%81%E8%A7%A3%E5%A3%93%E7%B8%AE%E8%88%87%E6%AA%94%E6%A1%88%E6%90%AC%E7%A7%BB-%E8%A4%87%E8%A3%BD/</url>
     <content><![CDATA[<p>雖然這個Blog是藉由GitHub Pages代管，不過像是md檔和其他資料不是說要復原就復原的，要復原還要經過一段步驟，早上實作了一次實在是搞得頭很昏，找時間在照著教學做一次並把過程記錄下來以備不時之需。</p>
