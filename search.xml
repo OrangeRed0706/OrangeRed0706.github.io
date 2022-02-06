@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>C# - LeetCode 1. Two Sum (Easy)</title>
-    <url>/2022/02/06/C-LeetCode-1-Two-Sum-Easy/</url>
-    <content><![CDATA[<p><a href="https://leetcode.com/problems/two-sum/">https://leetcode.com/problems/two-sum/</a><br>題目的要求是給予一個int陣列和目標值，回傳目標值是陣列中哪兩個索引中加起來的。</p>
-<p>Example :</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Input: nums = [2,7,11,15], target = 9</span><br><span class="line">Output: [0,1]</span><br><span class="line">Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].</span><br></pre></td></tr></table></figure>
-
-<p>想了想可以直接用兩個For迴圈暴力解掉，考慮到複雜度的問題這邊改用Dictinary的方式解題，Dictionary是由Key和Value組成，但是Key是不能重複的。</p>
-<p>我自己覺得這題的關鍵點在 left &#x3D; target - num[i] ; 這一行</p>
+    <title>C#檔案壓縮搬移處理</title>
+    <url>/2022/02/06/C-%E6%AA%94%E6%A1%88%E5%A3%93%E7%B8%AE%E6%90%AC%E7%A7%BB%E8%99%95%E7%90%86/</url>
+    <content><![CDATA[<p>雖然這個Blog是藉由GitHub Pages代管，不過像是md檔和其他資料不是說要復原就復原的，要復原還要經過一段步驟，早上實作了一次實在是搞得頭很昏，找時間在照著教學做一次並把過程記錄下來以備不時之需。</p>
+<p>養成備份習慣是很重要的，不然資料不見了去資料救援還不一定能把資料救回來，所以我要讓我這Blog的檔案做個每日備份到雲端裡面。</p>
+<p>首先看了一下這資料夾的檔案非常瑣碎，才93M的空間卻有14392個檔案，這樣直接備份到雲端光同步就會耗掉相當大的資源，所以我的想法是把資料夾壓縮起來再備份到雲端就好了。<br><img src="https://i.imgur.com/gRrmYqo.png"></p>
 <span id="more"></span>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public int[] TwoSum(int[] nums, int target) &#123;</span><br><span class="line">            //宣告Dictionary temp 由兩個int組合</span><br><span class="line">            Dictionary&lt;int, int&gt; temp = new Dictionary&lt;int, int&gt;();</span><br><span class="line">            for (int i = 0; i &lt; nums.Length; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                //把target的值減陣列裡面的元素的值只派給left</span><br><span class="line">                int left = target - nums[i];</span><br><span class="line">                //假如Dictionary裡面有left值，return回去兩值的索引值</span><br><span class="line">                if (temp.ContainsKey(left))</span><br><span class="line">                &#123;</span><br><span class="line">                    return new int[] &#123; temp[left], i &#125;;</span><br><span class="line">                &#125;</span><br><span class="line">                //如果temp裡面不存在nums裡的值，temp加入(key(值)、value(索引值))</span><br><span class="line">                if (!temp.ContainsKey(nums[i]))</span><br><span class="line">                &#123;</span><br><span class="line">                    temp.Add(nums[i], i);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            return null;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h6 id="tags-LeetCode"><a href="#tags-LeetCode" class="headerlink" title="tags: LeetCode"></a>tags: <code>LeetCode</code></h6>]]></content>
+<p>在專案中加入 System.IO.Compression.FileSystem 的元件參考，並使用命名空間</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//使用的命名空間</span><br><span class="line">using System.IO.Compression;</span><br><span class="line">using System.IO;</span><br><span class="line"></span><br><span class="line">        static void Main(string[] args)</span><br><span class="line">        &#123;</span><br><span class="line">            //起始路徑</span><br><span class="line">            string startPath = @&quot;I:\Lynnblog&quot;; </span><br><span class="line">            //壓縮後的路徑</span><br><span class="line">            string zipPath = @&quot;D:\Lynnblog_backup.zip&quot;;</span><br><span class="line">            //如果檔案存在先刪除，避免產生檔案已存在的例外</span><br><span class="line">            if (File.Exists(zipPath))</span><br><span class="line">            &#123;</span><br><span class="line">                File.Delete(zipPath);</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">                //壓縮檔案</span><br><span class="line">                ZipFile.CreateFromDirectory(startPath, zipPath);</span><br><span class="line">            &#125;</span><br><span class="line">            //確定檔案存在才執行搬移，避免錯誤</span><br><span class="line">            if (File.Exists(zipPath))</span><br><span class="line">            &#123;</span><br><span class="line">                //目標存放路徑</span><br><span class="line">                string destinationFile = @&quot;C:\Users\Lynn\iCloudDrive\backup\Lynnblog_backup.zip&quot;;</span><br><span class="line">                //搬移，最後的true是覆蓋檔案的意思</span><br><span class="line">                File.Copy(zipPath, destinationFile, true);</span><br><span class="line">                //最後一樣把原本的壓縮檔刪除</span><br><span class="line">                File.Delete(zipPath);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>建置好後使用工作排程器去執行該專案bin資料夾下的可執行檔就可以正常使用了！<br>現在先暫時這樣就好，以後如果心血來潮再一次備份多天一點順便弄個Log檔。</p>
+<h6 id="參考網址："><a href="#參考網址：" class="headerlink" title="參考網址："></a>參考網址：</h6><p><a href="https://docs.microsoft.com/zh-tw/dotnet/api/system.io.compression.zipfile?redirectedfrom=MSDN&amp;view=net-6.0">https://docs.microsoft.com/zh-tw/dotnet/api/system.io.compression.zipfile?redirectedfrom=MSDN&amp;view=net-6.0</a><br><a href="https://docs.microsoft.com/zh-tw/dotnet/csharp/programming-guide/file-system/how-to-copy-delete-and-move-files-and-folders">https://docs.microsoft.com/zh-tw/dotnet/csharp/programming-guide/file-system/how-to-copy-delete-and-move-files-and-folders</a></p>
+]]></content>
       <categories>
-        <category>LeetCode</category>
+        <category>C#</category>
       </categories>
   </entry>
   <entry>
@@ -32,22 +31,6 @@
 <h6 id="tags-LeetCode"><a href="#tags-LeetCode" class="headerlink" title="tags: LeetCode"></a>tags: <code>LeetCode</code></h6>]]></content>
       <categories>
         <category>LeetCode</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>C#檔案壓縮搬移處理</title>
-    <url>/2022/02/06/C-%E6%AA%94%E6%A1%88%E5%A3%93%E7%B8%AE%E6%90%AC%E7%A7%BB%E8%99%95%E7%90%86/</url>
-    <content><![CDATA[<p>雖然這個Blog是藉由GitHub Pages代管，不過像是md檔和其他資料不是說要復原就復原的，要復原還要經過一段步驟，早上實作了一次實在是搞得頭很昏，找時間在照著教學做一次並把過程記錄下來以備不時之需。</p>
-<p>養成備份習慣是很重要的，不然資料不見了去資料救援還不一定能把資料救回來，所以我要讓我這Blog的檔案做個每日備份到雲端裡面。</p>
-<p>首先看了一下這資料夾的檔案非常瑣碎，才93M的空間卻有14392個檔案，這樣直接備份到雲端光同步就會耗掉相當大的資源，所以我的想法是把資料夾壓縮起來再備份到雲端就好了。<br><img src="https://i.imgur.com/gRrmYqo.png"></p>
-<span id="more"></span>
-<p>在專案中加入 System.IO.Compression.FileSystem 的元件參考，並使用命名空間</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//使用的命名空間</span><br><span class="line">using System.IO.Compression;</span><br><span class="line">using System.IO;</span><br><span class="line"></span><br><span class="line">        static void Main(string[] args)</span><br><span class="line">        &#123;</span><br><span class="line">            //起始路徑</span><br><span class="line">            string startPath = @&quot;I:\Lynnblog&quot;; </span><br><span class="line">            //壓縮後的路徑</span><br><span class="line">            string zipPath = @&quot;D:\Lynnblog_backup.zip&quot;;</span><br><span class="line">            //如果檔案存在先刪除，避免產生檔案已存在的例外</span><br><span class="line">            if (File.Exists(zipPath))</span><br><span class="line">            &#123;</span><br><span class="line">                File.Delete(zipPath);</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">                //壓縮檔案</span><br><span class="line">                ZipFile.CreateFromDirectory(startPath, zipPath);</span><br><span class="line">            &#125;</span><br><span class="line">            //確定檔案存在才執行搬移，避免錯誤</span><br><span class="line">            if (File.Exists(zipPath))</span><br><span class="line">            &#123;</span><br><span class="line">                //目標存放路徑</span><br><span class="line">                string destinationFile = @&quot;C:\Users\Lynn\iCloudDrive\backup\Lynnblog_backup.zip&quot;;</span><br><span class="line">                //搬移，最後的true是覆蓋檔案的意思</span><br><span class="line">                File.Copy(zipPath, destinationFile, true);</span><br><span class="line">                //最後一樣把原本的壓縮檔刪除</span><br><span class="line">                File.Delete(zipPath);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>建置好後使用工作排程器去執行該專案bin資料夾下的可執行檔就可以正常使用了！<br>現在先暫時這樣就好，以後如果心血來潮再一次備份多天一點順便弄個Log檔。</p>
-<h6 id="參考網址："><a href="#參考網址：" class="headerlink" title="參考網址："></a>參考網址：</h6><p><a href="https://docs.microsoft.com/zh-tw/dotnet/api/system.io.compression.zipfile?redirectedfrom=MSDN&amp;view=net-6.0">https://docs.microsoft.com/zh-tw/dotnet/api/system.io.compression.zipfile?redirectedfrom=MSDN&amp;view=net-6.0</a><br><a href="https://docs.microsoft.com/zh-tw/dotnet/csharp/programming-guide/file-system/how-to-copy-delete-and-move-files-and-folders">https://docs.microsoft.com/zh-tw/dotnet/csharp/programming-guide/file-system/how-to-copy-delete-and-move-files-and-folders</a></p>
-]]></content>
-      <categories>
-        <category>C#</category>
       </categories>
   </entry>
   <entry>
