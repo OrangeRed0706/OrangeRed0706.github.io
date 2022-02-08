@@ -34,6 +34,41 @@
       </categories>
   </entry>
   <entry>
+    <title>LeetCode 20. Valid Parentheses (Easy)</title>
+    <url>/2022/02/07/LeetCode-20-Valid-Parentheses-Easy/</url>
+    <content><![CDATA[<p>Given a string s containing just the characters ‘(‘, ‘)’, ‘{‘, ‘}’, ‘[‘ and ‘]’, determine if the input string is valid.</p>
+<p>An input string is valid if:</p>
+<p>Open brackets must be closed by the same type of brackets.<br>Open brackets must be closed in the correct order.</p>
+<span id="more"></span>
+
+
+<p>Example :</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Input: &quot;()&quot;</span><br><span class="line">Output: true</span><br><span class="line"></span><br><span class="line">Input: s = &quot;()[]&#123;&#125;&quot;</span><br><span class="line">Output: true</span><br><span class="line"></span><br><span class="line">Input: s = &quot;(]&quot;</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure>
+<p>題目的要求是輸入一個字串，裡面的括號是成對的話回傳true沒有的話回傳false</p>
+<p>這邊就使用到Stack了，Stack可以當作是一個集合，裡面的資料是後進先出。<br><a href="https://docs.microsoft.com/zh-tw/dotnet/api/system.collections.stack?view=net-6.0">MSDN Stack類別</a></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public bool IsValid(string s) &#123;</span><br><span class="line">            //宣告一個Dictionary，裡面新增括號</span><br><span class="line">          Dictionary&lt;char, char&gt; dic = new Dictionary&lt;char, char&gt;();</span><br><span class="line">            dic.Add(&#x27;&#125;&#x27;, &#x27;&#123;&#x27;);</span><br><span class="line">            dic.Add(&#x27;]&#x27;, &#x27;[&#x27;);</span><br><span class="line">            dic.Add(&#x27;)&#x27;, &#x27;(&#x27;);</span><br><span class="line">            //如果字串長度不是成對的直接return false</span><br><span class="line">            if (s.Length % 2 == 1)</span><br><span class="line">                return false;</span><br><span class="line">            //宣告一個stack裡面放字元</span><br><span class="line">            var stack = new Stack&lt;char&gt;();</span><br><span class="line">            //遍歷每個字串每個字元</span><br><span class="line">            for (int i = 0; i &lt; s.Length; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                char c = s[i];</span><br><span class="line">                //如果c的字元是dic value裡的左括號，新增對應的右括號進去</span><br><span class="line">                if (dic.ContainsValue(c))</span><br><span class="line">                &#123;</span><br><span class="line">                    stack.Push(c);</span><br><span class="line">                &#125;</span><br><span class="line">                else</span><br><span class="line">                &#123;</span><br><span class="line">                    //如果stack都完全沒東西return false</span><br><span class="line">                    if (stack.Count == 0)</span><br><span class="line">                    &#123;</span><br><span class="line">                        return false;</span><br><span class="line">                    &#125;</span><br><span class="line">                    //如果stack最後進來的值跟c(右括號對右括號代表成對)</span><br><span class="line">                    if (stack.Peek() == dic[c])</span><br><span class="line">                    &#123;</span><br><span class="line">                        //移除最後進來的值</span><br><span class="line">                        stack.Pop();</span><br><span class="line">                    &#125;else return false;</span><br><span class="line">                    </span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            return stack.Count == 0;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>LeetCode 70. Climbing Stairs (Easy)</title>
+    <url>/2022/02/08/LeetCode-70-Climbing-Stairs-Easy/</url>
+    <content><![CDATA[<p>You are climbing a staircase. It takes n steps to reach the top.</p>
+<p>Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?</p>
+<p>Example :</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Input: n = 2</span><br><span class="line">Output: 2</span><br><span class="line">Explanation: There are two ways to climb to the top.</span><br><span class="line">1. 1 step + 1 step</span><br><span class="line">2. 2 steps</span><br><span class="line"></span><br><span class="line">Input: n = 3</span><br><span class="line">Output: 3</span><br><span class="line">Explanation: There are three ways to climb to the top.</span><br><span class="line">1. 1 step + 1 step + 1 step</span><br><span class="line">2. 1 step + 2 steps</span><br><span class="line">3. 2 steps + 1 step</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<p>題目的要求是算排列組合，給一個n階梯，一次只能踏 1 或 2步，算出所有的組合。<br>n &#x3D; 1 , result &#x3D; 1<br>n &#x3D; 2 , result &#x3D; 1 + 1<br>n &#x3D; 3 , result &#x3D; 2 + 1<br>n &#x3D; 4 , result &#x3D; 3 + 2<br>n &#x3D; 5 , result &#x3D; 5 + 3<br>發現公式是<br>f(n) &#x3D; f(n-1) + f(n-2)</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public int ClimbStairs(int n) &#123;</span><br><span class="line">            if (n == 1 || n==2)</span><br><span class="line">            &#123;</span><br><span class="line">                return n;</span><br><span class="line">            &#125;</span><br><span class="line">            int prev = 1;</span><br><span class="line">            int cur = 2;</span><br><span class="line">            for (int i = 3; i &lt;= n; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                int temp = cur;</span><br><span class="line">                cur = cur + prev;</span><br><span class="line">                prev = temp;</span><br><span class="line">            &#125;</span><br><span class="line">            return cur;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/DU7fAvZ.png"></p>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+  </entry>
+  <entry>
     <title>自我問題歸納</title>
     <url>/2022/02/05/%E8%87%AA%E6%88%91%E5%95%8F%E9%A1%8C%E6%AD%B8%E7%B4%8D/</url>
     <content><![CDATA[<h4 id="學習方向建議"><a href="#學習方向建議" class="headerlink" title="學習方向建議"></a>學習方向建議</h4><ul>
@@ -76,24 +111,5 @@
         <tag>菜雞</tag>
         <tag>學習心得</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>LeetCode 20. Valid Parentheses (Easy)</title>
-    <url>/2022/02/07/LeetCode-20-Valid-Parentheses-Easy/</url>
-    <content><![CDATA[<p>Given a string s containing just the characters ‘(‘, ‘)’, ‘{‘, ‘}’, ‘[‘ and ‘]’, determine if the input string is valid.</p>
-<p>An input string is valid if:</p>
-<p>Open brackets must be closed by the same type of brackets.<br>Open brackets must be closed in the correct order.</p>
-<span id="more"></span>
-
-
-<p>Example :</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Input: &quot;()&quot;</span><br><span class="line">Output: true</span><br><span class="line"></span><br><span class="line">Input: s = &quot;()[]&#123;&#125;&quot;</span><br><span class="line">Output: true</span><br><span class="line"></span><br><span class="line">Input: s = &quot;(]&quot;</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure>
-<p>題目的要求是輸入一個字串，裡面的括號是成對的話回傳true沒有的話回傳false</p>
-<p>這邊就使用到Stack了，Stack可以當作是一個集合，裡面的資料是後進先出。<br><a href="https://docs.microsoft.com/zh-tw/dotnet/api/system.collections.stack?view=net-6.0">MSDN Stack類別</a></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public bool IsValid(string s) &#123;</span><br><span class="line">            //宣告一個Dictionary，裡面新增括號</span><br><span class="line">          Dictionary&lt;char, char&gt; dic = new Dictionary&lt;char, char&gt;();</span><br><span class="line">            dic.Add(&#x27;&#125;&#x27;, &#x27;&#123;&#x27;);</span><br><span class="line">            dic.Add(&#x27;]&#x27;, &#x27;[&#x27;);</span><br><span class="line">            dic.Add(&#x27;)&#x27;, &#x27;(&#x27;);</span><br><span class="line">            //如果字串長度不是成對的直接return false</span><br><span class="line">            if (s.Length % 2 == 1)</span><br><span class="line">                return false;</span><br><span class="line">            //宣告一個stack裡面放字元</span><br><span class="line">            var stack = new Stack&lt;char&gt;();</span><br><span class="line">            //遍歷每個字串每個字元</span><br><span class="line">            for (int i = 0; i &lt; s.Length; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                char c = s[i];</span><br><span class="line">                //如果c的字元是dic value裡的左括號，新增對應的右括號進去</span><br><span class="line">                if (dic.ContainsValue(c))</span><br><span class="line">                &#123;</span><br><span class="line">                    stack.Push(c);</span><br><span class="line">                &#125;</span><br><span class="line">                else</span><br><span class="line">                &#123;</span><br><span class="line">                    //如果stack都完全沒東西return false</span><br><span class="line">                    if (stack.Count == 0)</span><br><span class="line">                    &#123;</span><br><span class="line">                        return false;</span><br><span class="line">                    &#125;</span><br><span class="line">                    //如果stack最後進來的值跟c(右括號對右括號代表成對)</span><br><span class="line">                    if (stack.Peek() == dic[c])</span><br><span class="line">                    &#123;</span><br><span class="line">                        //移除最後進來的值</span><br><span class="line">                        stack.Pop();</span><br><span class="line">                    &#125;else return false;</span><br><span class="line">                    </span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            return stack.Count == 0;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>LeetCode</category>
-      </categories>
   </entry>
 </search>
