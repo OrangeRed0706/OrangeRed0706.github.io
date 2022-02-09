@@ -29,19 +29,19 @@
 
   gtag('config', 'G-X12F8EJSST');
 </script>
-  <meta name="description" content="https:&#x2F;&#x2F;leetcode.com&#x2F;problems&#x2F;two-sum&#x2F;題目的要求是給予一個int陣列和目標值，回傳目標值是陣列中哪兩個索引中加起來的。 Example : 123Input: nums &#x3D; [2,7,11,15], target &#x3D; 9Output: [0,1]Explanation: Because nums[0] + nums[1] &#x3D;&#x3D; 9, we return [0,">
+  <meta name="description" content="Given a non-empty array of integers nums, every element appears twice except for one. Find that single one. You must implement a solution with a linear runtime complexity and use only constant extra s">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode 1. Two Sum (Easy)">
-<meta property="og:url" content="https://orangered0706.github.io/2022/02/06/LeetCode-1-Two-Sum-Easy/">
+<meta property="og:title" content="LeetCode 136. Single Number (Easy)">
+<meta property="og:url" content="https://orangered0706.github.io/2022/02/09/LeetCode-136-Single-Number-Easy/">
 <meta property="og:site_name" content="Lynn Blog">
-<meta property="og:description" content="https:&#x2F;&#x2F;leetcode.com&#x2F;problems&#x2F;two-sum&#x2F;題目的要求是給予一個int陣列和目標值，回傳目標值是陣列中哪兩個索引中加起來的。 Example : 123Input: nums &#x3D; [2,7,11,15], target &#x3D; 9Output: [0,1]Explanation: Because nums[0] + nums[1] &#x3D;&#x3D; 9, we return [0,">
+<meta property="og:description" content="Given a non-empty array of integers nums, every element appears twice except for one. Find that single one. You must implement a solution with a linear runtime complexity and use only constant extra s">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2022-02-06T04:11:12.000Z">
-<meta property="article:modified_time" content="2022-02-06T06:52:03.515Z">
+<meta property="article:published_time" content="2022-02-09T15:15:05.000Z">
+<meta property="article:modified_time" content="2022-02-09T15:15:31.015Z">
 <meta property="article:author" content="Lynn">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://orangered0706.github.io/2022/02/06/LeetCode-1-Two-Sum-Easy/">
+<link rel="canonical" href="https://orangered0706.github.io/2022/02/09/LeetCode-136-Single-Number-Easy/">
 
 
 <script id="page-configurations">
@@ -54,7 +54,7 @@
   };
 </script>
 
-  <title>LeetCode 1. Two Sum (Easy) | Lynn Blog</title>
+  <title>LeetCode 136. Single Number (Easy) | Lynn Blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-X12F8EJSST"></script>
     <script>
@@ -211,7 +211,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://orangered0706.github.io/2022/02/06/LeetCode-1-Two-Sum-Easy/">
+    <link itemprop="mainEntityOfPage" href="https://orangered0706.github.io/2022/02/09/LeetCode-136-Single-Number-Easy/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -224,7 +224,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          LeetCode 1. Two Sum (Easy)
+          LeetCode 136. Single Number (Easy)
         </h1>
 
         <div class="post-meta">
@@ -235,7 +235,7 @@
               <span class="post-meta-item-text">發表於</span>
               
 
-              <time title="創建時間：2022-02-06 12:11:12 / 修改時間：14:52:03" itemprop="dateCreated datePublished" datetime="2022-02-06T12:11:12+08:00">2022-02-06</time>
+              <time title="創建時間：2022-02-09 23:15:05 / 修改時間：23:15:31" itemprop="dateCreated datePublished" datetime="2022-02-09T23:15:05+08:00">2022-02-09</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -253,7 +253,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">文章字數：</span>
-              <span>851</span>
+              <span>794</span>
             </span>
             <span class="post-meta-item" title="所需閱讀時間">
               <span class="post-meta-item-icon">
@@ -272,16 +272,14 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><a target="_blank" rel="noopener" href="https://leetcode.com/problems/two-sum/">https://leetcode.com/problems/two-sum/</a><br>題目的要求是給予一個int陣列和目標值，回傳目標值是陣列中哪兩個索引中加起來的。</p>
-<p>Example :</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: nums = [2,7,11,15], target = 9</span><br><span class="line">Output: [0,1]</span><br><span class="line">Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].</span><br></pre></td></tr></table></figure>
+        <p>Given a non-empty array of integers nums, every element appears twice except for one. Find that single one.</p>
+<p>You must implement a solution with a linear runtime complexity and use only constant extra space.</p>
+<p>Example:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Input: nums = [2,2,1]</span><br><span class="line">Output: 1</span><br><span class="line"></span><br><span class="line">Input: [4,1,2,1,2]</span><br><span class="line">Output: 4</span><br></pre></td></tr></table></figure>
 
-<p>想了想可以直接用兩個For迴圈暴力解掉，考慮到複雜度的問題這邊改用Dictinary的方式解題，Dictionary是由Key和Value組成，但是Key是不能重複的。</p>
-<p>我自己覺得這題的關鍵點在 left &#x3D; target - num[i] ; 這一行</p>
-<span id="more"></span>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public int[] TwoSum(int[] nums, int target) &#123;</span><br><span class="line">            //宣告Dictionary temp 由兩個int組合</span><br><span class="line">            Dictionary&lt;int, int&gt; temp = new Dictionary&lt;int, int&gt;();</span><br><span class="line">            for (int i = 0; i &lt; nums.Length; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                //把target的值減陣列裡面的元素的值只派給left</span><br><span class="line">                int left = target - nums[i];</span><br><span class="line">                //假如Dictionary裡面有left值，return回去兩值的索引值</span><br><span class="line">                if (temp.ContainsKey(left))</span><br><span class="line">                &#123;</span><br><span class="line">                    return new int[] &#123; temp[left], i &#125;;</span><br><span class="line">                &#125;</span><br><span class="line">                //如果temp裡面不存在nums裡的值，temp加入(key(值)、value(索引值))</span><br><span class="line">                if (!temp.ContainsKey(nums[i]))</span><br><span class="line">                &#123;</span><br><span class="line">                    temp.Add(nums[i], i);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            return null;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h6 id="tags-LeetCode"><a href="#tags-LeetCode" class="headerlink" title="tags: LeetCode"></a>tags: <code>LeetCode</code></h6>
+<p>&lt;–!more–&gt;</p>
+<p>找出陣列中只出現過一次的數字，這題直覺性的應該會使用Directory，首先判斷Key存不存在，如果存在value + 1，不存在的話把數字新增至Key裡面並且給予值 1，最後判斷Directory裡面Value等於1的值，回傳Key就好了。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public int SingleNumber(int[] nums) &#123;</span><br><span class="line">            Dictionary&lt;int, int&gt; dic = new Dictionary&lt;int, int&gt; &#123; &#125;;</span><br><span class="line">            for (int i = 0; i &lt; nums.Length; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                if (dic.ContainsKey(nums[i]))</span><br><span class="line">                &#123;</span><br><span class="line">                    dic[nums[i]]++;</span><br><span class="line">                &#125;else</span><br><span class="line">                &#123;</span><br><span class="line">                    dic.Add(nums[i], 1);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            if (dic.ContainsValue(1))</span><br><span class="line">            &#123;</span><br><span class="line">                return dic.FirstOrDefault(x =&gt; x.Value == 1).Key;</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">            &#123;</span><br><span class="line">                return 0;</span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     </div>
 
     
@@ -296,13 +294,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2022/02/06/C-%E6%AA%94%E6%A1%88%E5%A3%93%E7%B8%AE%E6%90%AC%E7%A7%BB%E8%99%95%E7%90%86/" rel="prev" title="C#檔案壓縮搬移處理">
-      <i class="fa fa-chevron-left"></i> C#檔案壓縮搬移處理
+    <a href="/2022/02/08/LeetCode-70-Climbing-Stairs-Easy/" rel="prev" title="LeetCode 70. Climbing Stairs (Easy)">
+      <i class="fa fa-chevron-left"></i> LeetCode 70. Climbing Stairs (Easy)
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2022/02/07/LeetCode-20-Valid-Parentheses-Easy/" rel="next" title="LeetCode 20. Valid Parentheses (Easy)">
-      LeetCode 20. Valid Parentheses (Easy) <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -362,7 +357,6 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#tags-LeetCode"><span class="nav-number">1.</span> <span class="nav-text">tags: LeetCode</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -508,7 +502,7 @@ NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
       repo        : 'blog-comments',
       owner       : 'OrangeRed0706',
       admin       : ['OrangeRed0706'],
-      id          : '5bb9b34f363d36ebfa676d73cab47988',
+      id          : '9bd65660c629622b66e33b9989cd030c',
         language: 'zh-TW',
       distractionFreeMode: true
     });
