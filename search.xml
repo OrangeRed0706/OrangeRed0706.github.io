@@ -1,25 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>LeetCode 20. Valid Parentheses (Easy)</title>
-    <url>/2022/02/07/LeetCode-20-Valid-Parentheses-Easy/</url>
-    <content><![CDATA[<p>Given a string s containing just the characters ‘(‘, ‘)’, ‘{‘, ‘}’, ‘[‘ and ‘]’, determine if the input string is valid.</p>
-<p>An input string is valid if:</p>
-<p>Open brackets must be closed by the same type of brackets.<br>Open brackets must be closed in the correct order.</p>
-<span id="more"></span>
-
-
-<p>Example :</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Input: &quot;()&quot;</span><br><span class="line">Output: true</span><br><span class="line"></span><br><span class="line">Input: s = &quot;()[]&#123;&#125;&quot;</span><br><span class="line">Output: true</span><br><span class="line"></span><br><span class="line">Input: s = &quot;(]&quot;</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure>
-<p>題目的要求是輸入一個字串，裡面的括號是成對的話回傳true沒有的話回傳false</p>
-<p>這邊就使用到Stack了，Stack可以當作是一個集合，裡面的資料是後進先出。<br><a href="https://docs.microsoft.com/zh-tw/dotnet/api/system.collections.stack?view=net-6.0">MSDN Stack類別</a></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public bool IsValid(string s) &#123;</span><br><span class="line">            //宣告一個Dictionary，裡面新增括號</span><br><span class="line">          Dictionary&lt;char, char&gt; dic = new Dictionary&lt;char, char&gt;();</span><br><span class="line">            dic.Add(&#x27;&#125;&#x27;, &#x27;&#123;&#x27;);</span><br><span class="line">            dic.Add(&#x27;]&#x27;, &#x27;[&#x27;);</span><br><span class="line">            dic.Add(&#x27;)&#x27;, &#x27;(&#x27;);</span><br><span class="line">            //如果字串長度不是成對的直接return false</span><br><span class="line">            if (s.Length % 2 == 1)</span><br><span class="line">                return false;</span><br><span class="line">            //宣告一個stack裡面放字元</span><br><span class="line">            var stack = new Stack&lt;char&gt;();</span><br><span class="line">            //遍歷每個字串每個字元</span><br><span class="line">            for (int i = 0; i &lt; s.Length; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                char c = s[i];</span><br><span class="line">                //如果c的字元是dic value裡的左括號，新增對應的右括號進去</span><br><span class="line">                if (dic.ContainsValue(c))</span><br><span class="line">                &#123;</span><br><span class="line">                    stack.Push(c);</span><br><span class="line">                &#125;</span><br><span class="line">                else</span><br><span class="line">                &#123;</span><br><span class="line">                    //如果stack都完全沒東西return false</span><br><span class="line">                    if (stack.Count == 0)</span><br><span class="line">                    &#123;</span><br><span class="line">                        return false;</span><br><span class="line">                    &#125;</span><br><span class="line">                    //如果stack最後進來的值跟c(右括號對右括號代表成對)</span><br><span class="line">                    if (stack.Peek() == dic[c])</span><br><span class="line">                    &#123;</span><br><span class="line">                        //移除最後進來的值</span><br><span class="line">                        stack.Pop();</span><br><span class="line">                    &#125;else return false;</span><br><span class="line">                    </span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            return stack.Count == 0;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>LeetCode</category>
-      </categories>
-  </entry>
-  <entry>
     <title>C#檔案壓縮搬移處理</title>
     <url>/2022/02/06/C-%E6%AA%94%E6%A1%88%E5%A3%93%E7%B8%AE%E6%90%AC%E7%A7%BB%E8%99%95%E7%90%86/</url>
     <content><![CDATA[<p>雖然這個Blog是藉由GitHub Pages代管，不過像是md檔和其他資料不是說要復原就復原的，要復原還要經過一段步驟，早上實作了一次實在是搞得頭很昏，找時間在照著教學做一次並把過程記錄下來以備不時之需。</p>
@@ -53,6 +34,25 @@
       </categories>
   </entry>
   <entry>
+    <title>LeetCode 20. Valid Parentheses (Easy)</title>
+    <url>/2022/02/07/LeetCode-20-Valid-Parentheses-Easy/</url>
+    <content><![CDATA[<p>Given a string s containing just the characters ‘(‘, ‘)’, ‘{‘, ‘}’, ‘[‘ and ‘]’, determine if the input string is valid.</p>
+<p>An input string is valid if:</p>
+<p>Open brackets must be closed by the same type of brackets.<br>Open brackets must be closed in the correct order.</p>
+<span id="more"></span>
+
+
+<p>Example :</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Input: &quot;()&quot;</span><br><span class="line">Output: true</span><br><span class="line"></span><br><span class="line">Input: s = &quot;()[]&#123;&#125;&quot;</span><br><span class="line">Output: true</span><br><span class="line"></span><br><span class="line">Input: s = &quot;(]&quot;</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure>
+<p>題目的要求是輸入一個字串，裡面的括號是成對的話回傳true沒有的話回傳false</p>
+<p>這邊就使用到Stack了，Stack可以當作是一個集合，裡面的資料是後進先出。<br><a href="https://docs.microsoft.com/zh-tw/dotnet/api/system.collections.stack?view=net-6.0">MSDN Stack類別</a></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public bool IsValid(string s) &#123;</span><br><span class="line">            //宣告一個Dictionary，裡面新增括號</span><br><span class="line">          Dictionary&lt;char, char&gt; dic = new Dictionary&lt;char, char&gt;();</span><br><span class="line">            dic.Add(&#x27;&#125;&#x27;, &#x27;&#123;&#x27;);</span><br><span class="line">            dic.Add(&#x27;]&#x27;, &#x27;[&#x27;);</span><br><span class="line">            dic.Add(&#x27;)&#x27;, &#x27;(&#x27;);</span><br><span class="line">            //如果字串長度不是成對的直接return false</span><br><span class="line">            if (s.Length % 2 == 1)</span><br><span class="line">                return false;</span><br><span class="line">            //宣告一個stack裡面放字元</span><br><span class="line">            var stack = new Stack&lt;char&gt;();</span><br><span class="line">            //遍歷每個字串每個字元</span><br><span class="line">            for (int i = 0; i &lt; s.Length; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                char c = s[i];</span><br><span class="line">                //如果c的字元是dic value裡的左括號，新增對應的右括號進去</span><br><span class="line">                if (dic.ContainsValue(c))</span><br><span class="line">                &#123;</span><br><span class="line">                    stack.Push(c);</span><br><span class="line">                &#125;</span><br><span class="line">                else</span><br><span class="line">                &#123;</span><br><span class="line">                    //如果stack都完全沒東西return false</span><br><span class="line">                    if (stack.Count == 0)</span><br><span class="line">                    &#123;</span><br><span class="line">                        return false;</span><br><span class="line">                    &#125;</span><br><span class="line">                    //如果stack最後進來的值跟c(右括號對右括號代表成對)</span><br><span class="line">                    if (stack.Peek() == dic[c])</span><br><span class="line">                    &#123;</span><br><span class="line">                        //移除最後進來的值</span><br><span class="line">                        stack.Pop();</span><br><span class="line">                    &#125;else return false;</span><br><span class="line">                    </span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            return stack.Count == 0;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+  </entry>
+  <entry>
     <title>LeetCode 70. Climbing Stairs (Easy)</title>
     <url>/2022/02/08/LeetCode-70-Climbing-Stairs-Easy/</url>
     <content><![CDATA[<p>You are climbing a staircase. It takes n steps to reach the top.</p>
@@ -64,6 +64,22 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public int ClimbStairs(int n) &#123;</span><br><span class="line">            if (n == 1 || n==2)</span><br><span class="line">            &#123;</span><br><span class="line">                return n;</span><br><span class="line">            &#125;</span><br><span class="line">            int prev = 1;</span><br><span class="line">            int cur = 2;</span><br><span class="line">            for (int i = 3; i &lt;= n; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                int temp = cur;</span><br><span class="line">                cur = cur + prev;</span><br><span class="line">                prev = temp;</span><br><span class="line">            &#125;</span><br><span class="line">            return cur;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><img src="https://i.imgur.com/DU7fAvZ.png"></p>
 ]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>LeetCode 136. Single Number (Easy)</title>
+    <url>/2022/02/09/LeetCode-136-Single-Number-Easy/</url>
+    <content><![CDATA[<p>Given a non-empty array of integers nums, every element appears twice except for one. Find that single one.</p>
+<p>You must implement a solution with a linear runtime complexity and use only constant extra space.</p>
+<p>Example:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Input: nums = [2,2,1]</span><br><span class="line">Output: 1</span><br><span class="line"></span><br><span class="line">Input: [4,1,2,1,2]</span><br><span class="line">Output: 4</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<p>找出陣列中只出現過一次的數字，這題直覺性的應該會使用Directory，首先判斷Key存不存在，如果存在value + 1，不存在的話把數字新增至Key裡面並且給予值 1，最後判斷Directory裡面Value等於1的值，回傳Key就好了。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public int SingleNumber(int[] nums) &#123;</span><br><span class="line">            Dictionary&lt;int, int&gt; dic = new Dictionary&lt;int, int&gt; &#123; &#125;;</span><br><span class="line">            for (int i = 0; i &lt; nums.Length; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                if (dic.ContainsKey(nums[i]))</span><br><span class="line">                &#123;</span><br><span class="line">                    dic[nums[i]]++;</span><br><span class="line">                &#125;else</span><br><span class="line">                &#123;</span><br><span class="line">                    dic.Add(nums[i], 1);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            if (dic.ContainsValue(1))</span><br><span class="line">            &#123;</span><br><span class="line">                return dic.FirstOrDefault(x =&gt; x.Value == 1).Key;</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">            &#123;</span><br><span class="line">                return 0;</span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>LeetCode</category>
       </categories>
@@ -111,20 +127,5 @@
         <tag>菜雞</tag>
         <tag>學習心得</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>LeetCode 136. Single Number (Easy)</title>
-    <url>/2022/02/09/LeetCode-136-Single-Number-Easy/</url>
-    <content><![CDATA[<p>Given a non-empty array of integers nums, every element appears twice except for one. Find that single one.</p>
-<p>You must implement a solution with a linear runtime complexity and use only constant extra space.</p>
-<p>Example:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Input: nums = [2,2,1]</span><br><span class="line">Output: 1</span><br><span class="line"></span><br><span class="line">Input: [4,1,2,1,2]</span><br><span class="line">Output: 4</span><br></pre></td></tr></table></figure>
-
-<p>&lt;–!more–&gt;</p>
-<p>找出陣列中只出現過一次的數字，這題直覺性的應該會使用Directory，首先判斷Key存不存在，如果存在value + 1，不存在的話把數字新增至Key裡面並且給予值 1，最後判斷Directory裡面Value等於1的值，回傳Key就好了。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public int SingleNumber(int[] nums) &#123;</span><br><span class="line">            Dictionary&lt;int, int&gt; dic = new Dictionary&lt;int, int&gt; &#123; &#125;;</span><br><span class="line">            for (int i = 0; i &lt; nums.Length; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                if (dic.ContainsKey(nums[i]))</span><br><span class="line">                &#123;</span><br><span class="line">                    dic[nums[i]]++;</span><br><span class="line">                &#125;else</span><br><span class="line">                &#123;</span><br><span class="line">                    dic.Add(nums[i], 1);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            if (dic.ContainsValue(1))</span><br><span class="line">            &#123;</span><br><span class="line">                return dic.FirstOrDefault(x =&gt; x.Value == 1).Key;</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">            &#123;</span><br><span class="line">                return 0;</span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>LeetCode</category>
-      </categories>
   </entry>
 </search>
