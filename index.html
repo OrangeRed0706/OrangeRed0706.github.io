@@ -206,6 +206,139 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://orangered0706.github.io/2022/02/11/ADO-NET%E7%AD%86%E8%A8%98%E5%B0%8F%E7%B5%90/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lynn">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lynn Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/11/ADO-NET%E7%AD%86%E8%A8%98%E5%B0%8F%E7%B5%90/" class="post-title-link" itemprop="url">ADO .NET筆記小結</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2022-02-11 20:31:49 / 修改時間：20:33:15" itemprop="dateCreated datePublished" datetime="2022-02-11T20:31:49+08:00">2022-02-11</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C#</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="文章字數">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">文章字數：</span>
+              <span>1.2k</span>
+            </span>
+            <span class="post-meta-item" title="所需閱讀時間">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
+              <span>1 分鐘</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>ADO.NET是在.NET Framework裡負責資料存取的類別庫集，由連線資料來源connected data source（連線模式）以及離線資料模型disconnected data model（離線模式），兩種模式各有優缺點，共通點是一開始都必須建立與資料庫的連線。</p>
+<p>在選擇連接資料庫的模式時，必須謹慎考量使用狀況，因為兩種模式的實作方法與適合場合不一樣，日後要更改必須要全部重寫。</p>
+<h2 id="連線模式"><a href="#連線模式" class="headerlink" title="連線模式"></a>連線模式</h2><p>直接跟資料庫進行連線，可以直接看到資料庫的最新紀錄<br>主要依靠DataReader</p>
+<p>適合使用環境：</p>
+<ol>
+<li>操作頻率少</li>
+<li>使用時間很短暫</li>
+</ol>
+<p>優點：</p>
+<ul>
+<li>看的到資料庫的最新資料</li>
+</ul>
+<p>缺點：</p>
+<ul>
+<li>對連線需求占用數比較高</li>
+</ul>
+<p>特性：</p>
+<ul>
+<li>手動連線、斷線（因此要注意Close和Dispose，也有語法糖using可以用）</li>
+</ul>
+<h3 id="SqlConnection"><a href="#SqlConnection" class="headerlink" title="SqlConnection"></a>SqlConnection</h3><p>對資料庫連線需要透過SqlConnection類別，通常會把連線字串放在appconfig檔（加密），或是電腦裡的環境變數。</p>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-tw/dotnet/api/system.data.sqlclient.sqlconnection?view=dotnet-plat-ext-6.0">MSDN SqlConnection</a></p>
+<h3 id="SqlCommand"><a href="#SqlCommand" class="headerlink" title="SqlCommand"></a>SqlCommand</h3><p>程式對資料庫下T-SQL敘述或預存程序時要透過SqlCommand類別來使用</p>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-tw/dotnet/api/system.data.sqlclient.sqlcommand?view=dotnet-plat-ext-6.0">MSDN SqlCommand</a></p>
+<h3 id="SqlParameter"><a href="#SqlParameter" class="headerlink" title="SqlParameter"></a>SqlParameter</h3><p>SqlCommand裡面的敘述如果直接用字串相接的方式（意指直接把使用者填入的資料寫入指料庫），會非常危險，因為不曉得使用者是不是有惡意攻擊，所以有了SqlParameter可以在寫入資料庫之前先透過SqlParameter過濾我們限縮的字元還有想要的型別，要注意的是如果型別錯誤會有例外錯誤。</p>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-tw/dotnet/api/system.data.sqlclient.sqlparameter?view=dotnet-plat-ext-6.0">MSDN SqlParameter</a></p>
+<h2 id="離線模式"><a href="#離線模式" class="headerlink" title="離線模式"></a>離線模式</h2><h3 id="DataSet"><a href="#DataSet" class="headerlink" title="DataSet"></a>DataSet</h3><p>DataSet（資料集）是從資料來源撈出來的記憶體內部快取，是ADO .NET主要架構的元件之一，裡面包含了物件的集合<strong>DataTable</strong>，可以理解成ADO .NET DataSet 是記憶體駐留型資料表示法，<strong>獨立</strong>於資料來源，而且還有一致性的關聯式結構。</p>
+<p>DateSet的資料與資料來源無關，而DateSet與資料來源之間的溝通橋樑就是<br>DataAdapter，透過DataAdapter的方法進行基本的CRUD等等。</p>
+<p>這邊好像還有序列化要補充，待整理</p>
+<h3 id="DataTable"><a href="#DataTable" class="headerlink" title="DataTable"></a>DataTable</h3><p>DataTable在DateSet裡面，所以他只是記憶體中的一個資料表，可以使用DataRelation進行關聯式操作。</p>
+<h3 id="DataView"><a href="#DataView" class="headerlink" title="DataView"></a>DataView</h3><p>負責篩選排序搜尋</p>
+<p>這邊特別提到了父子關係，還沒搞清楚，待問老師<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-tw/dotnet/api/system.data.datarelation?view=net-6.0">MSDN DataRealation</a></p>
+<h3 id="DataAdapter"><a href="#DataAdapter" class="headerlink" title="DataAdapter"></a>DataAdapter</h3><p>使用DataAdapter提取資料時，因為要存取資料庫、尋找資料和處理資料，所以非常消耗時間，而且在提取時所有在伺服器上的資料列都會被鎖定，因此建議使用分段讀取。</p>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-tw/dotnet/api/system.data.common.dataadapter.fill?view=net-6.0#System_Data_Common_DataAdapter_Fill_System_Data_DataSet_">[MSDN DataAdpter.Fill( )]</a></p>
+<p>DataAdapter是程式和資料庫之間互動的橋樑，兩者之間所有的操作都會經過DataAdapter<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-tw/dotnet/framework/data/adonet/populating-a-dataset-from-a-dataadapter">[MSDN DataAdapter]</a></p>
+<p>適合使用環境：</p>
+<ol>
+<li>操作頻率高</li>
+<li>使用時間很久</li>
+</ol>
+<p>優點：</p>
+<ul>
+<li>對連線需求占用率較低</li>
+</ul>
+<p>缺點：</p>
+<ul>
+<li>不能即時看到資料庫</li>
+</ul>
+<p>特性：</p>
+<ul>
+<li>自動連線、自動斷線</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
     <link itemprop="mainEntityOfPage" href="https://orangered0706.github.io/2022/02/11/LeetCode-15-3Sum-Medium/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -910,7 +1043,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-count">8</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
@@ -967,12 +1100,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="總字數">8k</span>
+    <span title="總字數">9k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="所需總閱讀時間">7 分鐘</span>
+    <span title="所需總閱讀時間">8 分鐘</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 強力驅動
   </div>
