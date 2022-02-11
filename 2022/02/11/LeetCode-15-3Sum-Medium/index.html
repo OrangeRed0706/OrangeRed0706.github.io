@@ -29,19 +29,21 @@
 
   gtag('config', 'G-X12F8EJSST');
 </script>
-  <meta name="description" content="Given a string s containing just the characters ‘(‘, ‘)’, ‘{‘, ‘}’, ‘[‘ and ‘]’, determine if the input string is valid. An input string is valid if: Open brackets must be closed by the same type of b">
+  <meta name="description" content="Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i !&#x3D; j, i !&#x3D; k, and j !&#x3D; k, and nums[i] + nums[j] + nums[k] &#x3D;&#x3D; 0. Notice that the so">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode 20. Valid Parentheses (Easy)">
-<meta property="og:url" content="https://orangered0706.github.io/2022/02/07/LeetCode-20-Valid-Parentheses-Easy/">
+<meta property="og:title" content="LeetCode 15. 3Sum (Medium)">
+<meta property="og:url" content="https://orangered0706.github.io/2022/02/11/LeetCode-15-3Sum-Medium/">
 <meta property="og:site_name" content="Lynn Blog">
-<meta property="og:description" content="Given a string s containing just the characters ‘(‘, ‘)’, ‘{‘, ‘}’, ‘[‘ and ‘]’, determine if the input string is valid. An input string is valid if: Open brackets must be closed by the same type of b">
+<meta property="og:description" content="Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i !&#x3D; j, i !&#x3D; k, and j !&#x3D; k, and nums[i] + nums[j] + nums[k] &#x3D;&#x3D; 0. Notice that the so">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2022-02-07T12:41:48.000Z">
-<meta property="article:modified_time" content="2022-02-07T12:47:25.932Z">
+<meta property="og:image" content="https://i.imgur.com/s1AiVbJ.png">
+<meta property="article:published_time" content="2022-02-11T12:18:53.000Z">
+<meta property="article:modified_time" content="2022-02-11T12:19:32.497Z">
 <meta property="article:author" content="Lynn">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/s1AiVbJ.png">
 
-<link rel="canonical" href="https://orangered0706.github.io/2022/02/07/LeetCode-20-Valid-Parentheses-Easy/">
+<link rel="canonical" href="https://orangered0706.github.io/2022/02/11/LeetCode-15-3Sum-Medium/">
 
 
 <script id="page-configurations">
@@ -54,7 +56,7 @@
   };
 </script>
 
-  <title>LeetCode 20. Valid Parentheses (Easy) | Lynn Blog</title>
+  <title>LeetCode 15. 3Sum (Medium) | Lynn Blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-X12F8EJSST"></script>
     <script>
@@ -211,7 +213,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://orangered0706.github.io/2022/02/07/LeetCode-20-Valid-Parentheses-Easy/">
+    <link itemprop="mainEntityOfPage" href="https://orangered0706.github.io/2022/02/11/LeetCode-15-3Sum-Medium/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -224,7 +226,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          LeetCode 20. Valid Parentheses (Easy)
+          LeetCode 15. 3Sum (Medium)
         </h1>
 
         <div class="post-meta">
@@ -235,7 +237,7 @@
               <span class="post-meta-item-text">發表於</span>
               
 
-              <time title="創建時間：2022-02-07 20:41:48 / 修改時間：20:47:25" itemprop="dateCreated datePublished" datetime="2022-02-07T20:41:48+08:00">2022-02-07</time>
+              <time title="創建時間：2022-02-11 20:18:53 / 修改時間：20:19:32" itemprop="dateCreated datePublished" datetime="2022-02-11T20:18:53+08:00">2022-02-11</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -272,17 +274,14 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>Given a string s containing just the characters ‘(‘, ‘)’, ‘{‘, ‘}’, ‘[‘ and ‘]’, determine if the input string is valid.</p>
-<p>An input string is valid if:</p>
-<p>Open brackets must be closed by the same type of brackets.<br>Open brackets must be closed in the correct order.</p>
-<span id="more"></span>
-
-
+        <p>Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i !&#x3D; j, i !&#x3D; k, and j !&#x3D; k, and nums[i] + nums[j] + nums[k] &#x3D;&#x3D; 0.</p>
+<p>Notice that the solution set must not contain duplicate triplets.</p>
 <p>Example :</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;()&quot;</span><br><span class="line">Output: true</span><br><span class="line"></span><br><span class="line">Input: s = &quot;()[]&#123;&#125;&quot;</span><br><span class="line">Output: true</span><br><span class="line"></span><br><span class="line">Input: s = &quot;(]&quot;</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure>
-<p>題目的要求是輸入一個字串，裡面的括號是成對的話回傳true沒有的話回傳false</p>
-<p>這邊就使用到Stack了，Stack可以當作是一個集合，裡面的資料是後進先出。<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-tw/dotnet/api/system.collections.stack?view=net-6.0">MSDN Stack類別</a></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public bool IsValid(string s) &#123;</span><br><span class="line">            //宣告一個Dictionary，裡面新增括號</span><br><span class="line">          Dictionary&lt;char, char&gt; dic = new Dictionary&lt;char, char&gt;();</span><br><span class="line">            dic.Add(&#x27;&#125;&#x27;, &#x27;&#123;&#x27;);</span><br><span class="line">            dic.Add(&#x27;]&#x27;, &#x27;[&#x27;);</span><br><span class="line">            dic.Add(&#x27;)&#x27;, &#x27;(&#x27;);</span><br><span class="line">            //如果字串長度不是成對的直接return false</span><br><span class="line">            if (s.Length % 2 == 1)</span><br><span class="line">                return false;</span><br><span class="line">            //宣告一個stack裡面放字元</span><br><span class="line">            var stack = new Stack&lt;char&gt;();</span><br><span class="line">            //遍歷每個字串每個字元</span><br><span class="line">            for (int i = 0; i &lt; s.Length; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                char c = s[i];</span><br><span class="line">                //如果c的字元是dic value裡的左括號，新增對應的右括號進去</span><br><span class="line">                if (dic.ContainsValue(c))</span><br><span class="line">                &#123;</span><br><span class="line">                    stack.Push(c);</span><br><span class="line">                &#125;</span><br><span class="line">                else</span><br><span class="line">                &#123;</span><br><span class="line">                    //如果stack都完全沒東西return false</span><br><span class="line">                    if (stack.Count == 0)</span><br><span class="line">                    &#123;</span><br><span class="line">                        return false;</span><br><span class="line">                    &#125;</span><br><span class="line">                    //如果stack最後進來的值跟c(右括號對右括號代表成對)</span><br><span class="line">                    if (stack.Peek() == dic[c])</span><br><span class="line">                    &#123;</span><br><span class="line">                        //移除最後進來的值</span><br><span class="line">                        stack.Pop();</span><br><span class="line">                    &#125;else return false;</span><br><span class="line">                    </span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            return stack.Count == 0;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Input: nums = [-1,0,1,2,-1,-4]</span><br><span class="line">Output: [[-1,-1,2],[-1,0,1]]</span><br><span class="line"></span><br><span class="line">Input: nums = []</span><br><span class="line">Output: []</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Input: nums = [0]</span><br><span class="line">Output: []</span><br></pre></td></tr></table></figure>
+
+ <span id="more"></span>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"> public class Solution </span><br><span class="line">&#123;</span><br><span class="line">    public IList&lt;IList&lt;int&gt;&gt; ThreeSum(int[] nums)</span><br><span class="line">    &#123;</span><br><span class="line">            IList&lt;IList&lt;int&gt;&gt; result = new List&lt;IList&lt;int&gt;&gt;();</span><br><span class="line"></span><br><span class="line">            </span><br><span class="line">            if (nums == null || nums.Length &lt; 3)</span><br><span class="line">            &#123;</span><br><span class="line">                return result;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            Array.Sort(nums);</span><br><span class="line"></span><br><span class="line">            for (int first = 0; first &lt; nums.Length - 2; first++)</span><br><span class="line">            &#123;</span><br><span class="line">                如果first是重複值就跳下一輪</span><br><span class="line">                if (first &gt; 0 &amp;&amp; nums[first] == nums[first - 1])</span><br><span class="line">                &#123;</span><br><span class="line">                    continue;</span><br><span class="line">                &#125;</span><br><span class="line">                int second = first + 1;</span><br><span class="line">                int third = nums.Length - 1;</span><br><span class="line">                </span><br><span class="line">                while (second &lt; third)</span><br><span class="line">                &#123;</span><br><span class="line">                    //second重複的話一樣跳下一輪</span><br><span class="line">                    if (nums[second] == nums[second - 1] &amp;&amp; second &gt; first + 1)</span><br><span class="line">                    &#123;</span><br><span class="line">                        second++;</span><br><span class="line">                        continue;</span><br><span class="line">                    &#125;</span><br><span class="line">                    int sum = nums[first] + nums[second] + nums[third];</span><br><span class="line">                    if (sum == 0)</span><br><span class="line">                    &#123;</span><br><span class="line">                        result.Add(new List&lt;int&gt;()</span><br><span class="line">                        &#123;</span><br><span class="line">                            nums[first],nums[second],nums[third]</span><br><span class="line">                        &#125;);</span><br><span class="line">                        second++;</span><br><span class="line">                        third--;</span><br><span class="line">                    &#125;</span><br><span class="line">                    else if (sum &lt; 0)</span><br><span class="line">                    &#123;</span><br><span class="line">                        second++;</span><br><span class="line">                    &#125;</span><br><span class="line">                    else</span><br><span class="line">                    &#123;</span><br><span class="line">                        third--;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            return result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p> <img src="https://i.imgur.com/s1AiVbJ.png"></p>
 
     </div>
 
@@ -298,13 +297,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2022/02/06/LeetCode-1-Two-Sum-Easy/" rel="prev" title="LeetCode 1. Two Sum (Easy)">
-      <i class="fa fa-chevron-left"></i> LeetCode 1. Two Sum (Easy)
+    <a href="/2022/02/09/LeetCode-136-Single-Number-Easy/" rel="prev" title="LeetCode 136. Single Number (Easy)">
+      <i class="fa fa-chevron-left"></i> LeetCode 136. Single Number (Easy)
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2022/02/08/LeetCode-70-Climbing-Stairs-Easy/" rel="next" title="LeetCode 70. Climbing Stairs (Easy)">
-      LeetCode 70. Climbing Stairs (Easy) <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -509,7 +505,7 @@ NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
       repo        : 'blog-comments',
       owner       : 'OrangeRed0706',
       admin       : ['OrangeRed0706'],
-      id          : '6fd6a10f91f72a8cb478b689fe956fc0',
+      id          : 'cf99a70f6170cf0b804e168aaa4c31df',
         language: 'zh-TW',
       distractionFreeMode: true
     });
