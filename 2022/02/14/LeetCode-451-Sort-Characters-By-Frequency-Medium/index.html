@@ -29,15 +29,19 @@
 
   gtag('config', 'G-X12F8EJSST');
 </script>
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Lynn Blog">
-<meta property="og:url" content="https://orangered0706.github.io/archives/">
+  <meta name="description" content="Given a string s, sort it in decreasing order based on the frequency of the characters. The frequency of a character is the number of times it appears in the string. Return the sorted string. If there">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode 451. Sort Characters By Frequency (Medium)">
+<meta property="og:url" content="https://orangered0706.github.io/2022/02/14/LeetCode-451-Sort-Characters-By-Frequency-Medium/">
 <meta property="og:site_name" content="Lynn Blog">
+<meta property="og:description" content="Given a string s, sort it in decreasing order based on the frequency of the characters. The frequency of a character is the number of times it appears in the string. Return the sorted string. If there">
 <meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2022-02-14T14:30:20.000Z">
+<meta property="article:modified_time" content="2022-02-14T14:31:01.647Z">
 <meta property="article:author" content="Lynn">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://orangered0706.github.io/archives/">
+<link rel="canonical" href="https://orangered0706.github.io/2022/02/14/LeetCode-451-Sort-Characters-By-Frequency-Medium/">
 
 
 <script id="page-configurations">
@@ -45,12 +49,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-TW'
   };
 </script>
 
-  <title>歸檔 | Lynn Blog</title>
+  <title>LeetCode 451. Sort Characters By Frequency (Medium) | Lynn Blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-X12F8EJSST"></script>
     <script>
@@ -200,236 +204,117 @@
         <div class="content-wrap">
           
 
-          <div class="content archive">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <span class="collection-header">嗯..! 目前共有 10 篇文章。 繼續努力。</span>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://orangered0706.github.io/2022/02/14/LeetCode-451-Sort-Characters-By-Frequency-Medium/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lynn">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lynn Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          LeetCode 451. Sort Characters By Frequency (Medium)
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2022-02-14 22:30:20 / 修改時間：22:31:01" itemprop="dateCreated datePublished" datetime="2022-02-14T22:30:20+08:00">2022-02-14</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="文章字數">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">文章字數：</span>
+              <span>1.7k</span>
+            </span>
+            <span class="post-meta-item" title="所需閱讀時間">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
+              <span>2 分鐘</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2022</span>
+        <p>Given a string s, sort it in decreasing order based on the frequency of the characters. The frequency of a character is the number of times it appears in the string.</p>
+<p>Return the sorted string. If there are multiple answers, return any of them.</p>
+<p> Example:<br> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"> Input: s = &quot;tree&quot;</span><br><span class="line">Output: &quot;eert&quot;</span><br><span class="line">Explanation: &#x27;e&#x27; appears twice while &#x27;r&#x27; and &#x27;t&#x27; both appear once.</span><br><span class="line">So &#x27;e&#x27; must appear before both &#x27;r&#x27; and &#x27;t&#x27;. Therefore &quot;eetr&quot; is also a valid answer.</span><br><span class="line"></span><br><span class="line">Input: s = &quot;cccaaa&quot;</span><br><span class="line">Output: &quot;aaaccc&quot;</span><br><span class="line">Explanation: Both &#x27;c&#x27; and &#x27;a&#x27; appear three times, so both &quot;cccaaa&quot; and &quot;aaaccc&quot; are valid answers.</span><br><span class="line">Note that &quot;cacaca&quot; is incorrect, as the same characters must be together.</span><br><span class="line"></span><br><span class="line">Input: s = &quot;Aabb&quot;</span><br><span class="line">Output: &quot;bbAa&quot;</span><br><span class="line">Explanation: &quot;bbaA&quot; is also a valid answer, but &quot;Aabb&quot; is incorrect.</span><br><span class="line">Note that &#x27;A&#x27; and &#x27;a&#x27; are treated as two different characters.</span><br></pre></td></tr></table></figure><br> <span id="more"></span><br>Constraints:</p>
+<ul>
+<li>1 &lt;&#x3D; s.length &lt;&#x3D; 5 * 105</li>
+<li>s consists of uppercase and lowercase English letters and digits.</li>
+</ul>
+<p>計算字串內個別字元的個數大小，再排序後回傳</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public string FrequencySort(string s) &#123;</span><br><span class="line">            if (s == null || s.Length &lt;= 1) </span><br><span class="line">            &#123;</span><br><span class="line">                return s;</span><br><span class="line">            &#125;</span><br><span class="line">            var map = new Dictionary&lt;char, int&gt;();</span><br><span class="line">            var cs = s.ToCharArray();</span><br><span class="line">            //把裡面的值塞進Dictionary裡面統計</span><br><span class="line">            for (int i = 0; i &lt; cs.Length; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                if (map.ContainsKey(cs[i]))</span><br><span class="line">                &#123;</span><br><span class="line">                    map[cs[i]]++;</span><br><span class="line">                &#125; else</span><br><span class="line">                &#123;</span><br><span class="line">                    map.Add(cs[i], 1);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            //先依照出現次數排序</span><br><span class="line">            var sort = map.OrderByDescending(x =&gt; x.Value);</span><br><span class="line">            var result = new StringBuilder();</span><br><span class="line">            //還原字串</span><br><span class="line">            foreach (var item in sort)</span><br><span class="line">            &#123;</span><br><span class="line">                for (int i = 0;i &lt;item.Value;i++)</span><br><span class="line">                &#123;</span><br><span class="line">                    result.Append(item.Key);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            return result.ToString();        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h6 id="tags-LeetCode"><a href="#tags-LeetCode" class="headerlink" title="tags: LeetCode"></a>tags: <code>LeetCode</code></h6>
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-02-14T22:30:20+08:00"
-              content="2022-02-14">
-          02-14
-        </time>
-      </div>
+      <footer class="post-footer">
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/02/14/LeetCode-451-Sort-Characters-By-Frequency-Medium/" itemprop="url">
-            <span itemprop="name">LeetCode 451. Sort Characters By Frequency (Medium)</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-02-12T21:31:07+08:00"
-              content="2022-02-12">
-          02-12
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/02/12/LeetCode-771-Jewels-and-Stones-Easy/" itemprop="url">
-            <span itemprop="name">LeetCode 771. Jewels and Stones (Easy)</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-02-11T20:31:49+08:00"
-              content="2022-02-11">
-          02-11
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/02/11/ADO-NET%E7%AD%86%E8%A8%98%E5%B0%8F%E7%B5%90/" itemprop="url">
-            <span itemprop="name">ADO .NET筆記小結</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-02-11T20:18:53+08:00"
-              content="2022-02-11">
-          02-11
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/02/11/LeetCode-15-3Sum-Medium/" itemprop="url">
-            <span itemprop="name">LeetCode 15. 3Sum (Medium)</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-02-09T23:15:05+08:00"
-              content="2022-02-09">
-          02-09
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/02/09/LeetCode-136-Single-Number-Easy/" itemprop="url">
-            <span itemprop="name">LeetCode 136. Single Number (Easy)</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-02-08T22:45:13+08:00"
-              content="2022-02-08">
-          02-08
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/02/08/LeetCode-70-Climbing-Stairs-Easy/" itemprop="url">
-            <span itemprop="name">LeetCode 70. Climbing Stairs (Easy)</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-02-07T20:41:48+08:00"
-              content="2022-02-07">
-          02-07
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/02/07/LeetCode-20-Valid-Parentheses-Easy/" itemprop="url">
-            <span itemprop="name">LeetCode 20. Valid Parentheses (Easy)</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-02-06T12:11:12+08:00"
-              content="2022-02-06">
-          02-06
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/02/06/LeetCode-1-Two-Sum-Easy/" itemprop="url">
-            <span itemprop="name">LeetCode 1. Two Sum (Easy)</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-02-06T02:17:25+08:00"
-              content="2022-02-06">
-          02-06
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/02/06/C-%E6%AA%94%E6%A1%88%E5%A3%93%E7%B8%AE%E6%90%AC%E7%A7%BB%E8%99%95%E7%90%86/" itemprop="url">
-            <span itemprop="name">C#檔案壓縮搬移處理</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-02-05T12:05:57+08:00"
-              content="2022-02-05">
-          02-05
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/02/05/%E8%87%AA%E6%88%91%E5%95%8F%E9%A1%8C%E6%AD%B8%E7%B4%8D/" itemprop="url">
-            <span itemprop="name">自我問題歸納</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
+        
 
 
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/02/12/LeetCode-771-Jewels-and-Stones-Easy/" rel="prev" title="LeetCode 771. Jewels and Stones (Easy)">
+      <i class="fa fa-chevron-left"></i> LeetCode 771. Jewels and Stones (Easy)
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-  </div>
+      </footer>
+    
+  </article>
   
   
-  
-
   
 
 
 
           </div>
           
+    <div class="comments" id="gitalk-container"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -476,6 +361,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#tags-LeetCode"><span class="nav-number">1.</span> <span class="nav-text">tags: LeetCode</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -610,6 +496,25 @@
 
   
 
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '23a0493202daa8b669a9',
+      clientSecret: 'afd9c800f45444ff825f8bc5e150d74ec2ab99a4',
+      repo        : 'blog-comments',
+      owner       : 'OrangeRed0706',
+      admin       : ['OrangeRed0706'],
+      id          : '743c6748bd8b8b01abde7a089d2a0051',
+        language: 'zh-TW',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
 
 </body>
 </html>
